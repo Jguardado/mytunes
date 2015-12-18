@@ -5,7 +5,4 @@ var SongQueueEntryView = Backbone.View.extend({
 
   },
 
-  enqueue: function(){
-    
-  }
 });
