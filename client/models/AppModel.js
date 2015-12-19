@@ -15,13 +15,14 @@ var AppModel = Backbone.Model.extend({
     params.library.on('enqueue', function(song){
       //the keyword this is representative of of instances of the App model. These app models have properties: currentsong, songqueue, library.
 
-      //the items stored in these libraries are not the aaliyah song nor teh lsong in teh other occurances of libraries. 
-      console.log(this);
+      //the items stored in these libraries are not the aaliyah song nor the song in the other occurances of libraries. 
+      //console.log(this);
       this.get('songQueue').add(song);
     }, this);
 
     params.library.on('play', function(song){
-      //console.log('this is the song that is being played: ', song);
+      //this is setting the property current song on the current model instance and seting its value to song.
+        //the song it is refering to is the 'test song', not any of teh aaliyah tracks
       this.set('currentSong', song);
     }, this);
   }
