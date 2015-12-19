@@ -14,13 +14,7 @@ var AppModel = Backbone.Model.extend({
     //var nextSong = this.get('library').at(1);
     params.library.on('enqueue', function(song){
       //console.log('this is song in queue', song);
-      console.log(this.get('songQueue'));
-      // console.log("enqueue event triggered.  This is: ", this);
-      // console.log("this.library is: ", this.get('library'));
-        //console.log("this.model 0: ", this.get('library').models[1]);
-
-
-
+      
       this.get('songQueue').add(song);
     }, this);
 

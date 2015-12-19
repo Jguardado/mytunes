@@ -9,12 +9,24 @@ var PlayerView = Backbone.View.extend({
   },
 
   setSong: function(song){
-    this.model = song;
+    this.model = song;//this is refering to 'c25'. whatever that means
+    //this is called twice, second call is 'c47'.
     this.render();
   },
 
+
+
+
+
   render: function(){
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
-  }
+  },
+
+  ended: function(){//this isnt being accessed.
+    var temp  = this.model.get('songQueue').at(0);
+    //console.log(temp);
+    this.model.set(temp);
+   }
+
 
 });
