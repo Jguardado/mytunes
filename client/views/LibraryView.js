@@ -4,6 +4,7 @@ var LibraryView = Backbone.View.extend({
   tagName: "table",
 
   initialize: function() {
+    //The keyword this is representative of a library of models. this particular library has two songs in it. It is not compiled of the aaliyah songs.
     console.log(this);
     this.render();
   },
