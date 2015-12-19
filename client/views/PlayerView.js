@@ -6,6 +6,13 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
+    //watching the dom element to see if the song has ended. 'ended' is a listener keyword. Once the ended is triggered we invoked teh function dequeue.
+    this.$el.on('ended', function(){
+      //console.log(this)
+      //the SongModel has a method dequeue on it.
+      this.model.dequeue();
+      //inside of the anonymous function the keyword this become the dom element so we need to bind the keyword this to the model we are referencing.
+    }.bind(this))
   },
 
   setSong: function(song){
@@ -21,12 +28,6 @@ var PlayerView = Backbone.View.extend({
   render: function(){
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
   },
-
-  ended: function(){//this isnt being accessed.
-    var temp  = this.model.get('songQueue').at(0);
-    //console.log(temp);
-    this.model.set(temp);
-   }
 
 
 });
