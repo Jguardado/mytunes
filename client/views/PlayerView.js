@@ -10,9 +10,9 @@ var PlayerView = Backbone.View.extend({
     this.$el.on('ended', function(){
       //console.log(this)
       //the SongModel has a method dequeue on it.
-      this.model.dequeue();
+      this.model.ended();
       //inside of the anonymous function the keyword this become the dom element so we need to bind the keyword this to the model we are referencing.
-    }.bind(this))
+    }.bind(this));
   },
 
   setSong: function(song){
