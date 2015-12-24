@@ -1,30 +1,31 @@
 // SongModel.js - Defines a backbone model class for songs.
 var SongModel = Backbone.Model.extend({
-  // Our input input is a object, so we need to initialize the model
-  // to have the properties of that object
+  
+  //For every instance of the song model the corresponding properties below are set in the attributes property of teh song model.
   intialize: function (obj){
     this.set('url', obj.url);
     this.set('title', obj.title);
     this.set('artist', obj.artist);
   },
-// Our model now has the above properties
 
-
+  //creates a function that trigger the repective listen function on our app model. Providing the song as the context for teh keyword this.
   play: function(){
-    // Triggering an event on an instance of a SongModel will also trigger that event on all collections that SongModel instance belongs to.
-    // Why do we need to pass along the keyword this when we trigger the 'play' event?
+    
     this.trigger('play', this);
   },
 
+  //creates a function that triggers the respective listener function on our app model, when there is a song in the queue. 
   enqueue: function(){
-    //console.log('inside SongModel')
+
     this.trigger('enqueue', this);
   },
-  //creating a method that is triggered when the song has ended.
+  
+  //creates a function that triggers the respective listener function on our app model, when the current song is  removed from the queue.
   dequeue: function(){
     this.trigger('dequeue', this);
   },
 
+  //creates a function that triggers the respective listenr function on our app model when the current song has ended.
   ended: function(){
     this.trigger('ended', this);
   }
