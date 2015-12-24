@@ -2,18 +2,20 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    //create a listener that watches for 'ended' to be triggered and once it is we remove the first elemnt in the library and invoke our function that plays the song that has now taken the place as the first song.
+    //create a listeners that watch for the below events to be triggered in the song models that compose this collection. 
     this.on('ended', this.playNext, this);
     this.on('dequeue', this.dequeue, this);
     this.on('add', this.enqueue, this);
   },
 
+  //When there is only one item in this collection that song is played
   enqueue: function(){
     if (this.length === 1){
       this.playFirst();
     }
   },
 
+  //creates a function that removes song fromthe queue as long as there are song in the queue to be removed.
   dequeue: function(){
 
     if (this.length >= 1){
@@ -21,17 +23,16 @@ var SongQueue = Songs.extend({
     }
   },
 
+  //creates a function that selects the first item in the array of song models and invokes the function play on that model.
   playFirst: function(){
-  //the keyword this refers to a library (items stored in this have been generated in the spec runner.. they are not the song we converted to models)
   this.at(0).play();
   },
 
+  //locate where we are in the collection
+  //compare to see if the first song in the collection is equal to the song we are located at.
+  //if it is playfirst()
   playNext: function(song){
 
-    //locate where we are in the collection
-
-    //compare to see if the first song in the collection is equal to the song we are located at.
-    //if it is playfirst()
     this.shift();
     if(this.length>=1){
       this.playFirst();
