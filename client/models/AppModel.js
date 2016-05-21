@@ -12,6 +12,10 @@ var AppModel = Backbone.Model.extend({
     end up referring to the window. That's just what happens with all JS events. The handlers end up
     getting called from the window (unless we override it, as we do here). */
 
+    //creating a listner for the enqueue function.
+    //Referencing the collection passed in via arguments accessing the library property.
+    //when a song is added to the enque the listener should select the song passed in.
+
     //creating a listener for the play function.
     //when the function is called the the app model should retrieve the current song.
     params.library.on('play', function (song) {

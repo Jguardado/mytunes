@@ -8,6 +8,13 @@ var SongModel = Backbone.Model.extend({
     this.set('artist', obj.artist);
   },
 
+  //For every instance of the song model the corresponding properties below are set in the attributes property of teh song model.
+  intialize: function (obj) {
+    this.set('url', obj.url);
+    this.set('title', obj.title);
+    this.set('artist', obj.artist);
+  },
+
   //creates a function that trigger the repective listen function on our app model. Providing the song as the context for teh keyword this.
   play: function () {
 
